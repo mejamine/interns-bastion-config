@@ -2,3 +2,8 @@
   systemd:
     name: named
     state: restarted
+    
+- name: restart networkmanager
+  service:
+    name: NetworkManager
+    state: restarted

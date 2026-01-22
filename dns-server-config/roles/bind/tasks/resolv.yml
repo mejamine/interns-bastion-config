@@ -22,8 +22,3 @@
     mode: '0644'
   become: true
 
-handlers:
-  - name: restart networkmanager
-    service:
-      name: NetworkManager
-      state: restarted

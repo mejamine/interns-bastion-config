@@ -1,11 +1,11 @@
 domain: fedora.test
-dns_server_ip: 192.168.140.10
-subnet: 192.168.140.0 
+dns_server_ip: 192.168.180.10
+subnet: 192.168.180.0 
 netmask: 255.255.255.0
-min_address: 192.168.140.30
-max_address: 192.168.140.253
-brodcast: 192.168.140.254
-gateway: 192.168.140.1
+min_address: 192.168.180.30
+max_address: 192.168.180.253
+brodcast: 192.168.180.254
+gateway: 192.168.180.1
 filename: pxelinux.0
 cluster: ocp4
 bootstrap_hostname: bootstrap
@@ -13,10 +13,10 @@ master01_hostname: master01
 master02_hostname: master02
 master03_hostname: master03
 
-bootstrap_ip: 192.168.140.19
-master01_ip: 192.168.140.20
-master02_ip: 192.168.140.21
-master03_ip: 192.168.140.22
+bootstrap_ip: 192.168.180.19
+master01_ip: 192.168.180.20
+master02_ip: 192.168.180.21
+master03_ip: 192.168.180.22
 
 bootstrap_mac: "52:54:00:00:32:09"
 master01_mac: "52:54:00:00:32:0A"

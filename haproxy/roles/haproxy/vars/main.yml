@@ -4,10 +4,10 @@ master02_hostname: master02
 master03_hostname: master03
 
 
-bootstrap_ip: 192.168.140.19
-master01_ip: 192.168.140.20
-master02_ip: 192.168.140.21
-master03_ip: 192.168.140.22
+bootstrap_ip: 192.168.180.19
+master01_ip: 192.168.180.20
+master02_ip: 192.168.180.21
+master03_ip: 192.168.180.22
 
 
 k8s_api_port: 6443

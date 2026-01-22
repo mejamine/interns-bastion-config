@@ -1,8 +1,8 @@
-dns_server_ip: 192.168.140.10
-bootstrap_ip: 192.168.140.19
-master01_ip: 192.168.140.20
-master02_ip: 192.168.140.21
-master03_ip: 192.168.140.22
+dns_server_ip: 192.168.180.10
+bootstrap_ip: 192.168.180.19
+master01_ip: 192.168.180.20
+master02_ip: 192.168.180.21
+master03_ip: 192.168.180.22
 
 dns_hostname: dns.ocp4
 admin_hostname: root

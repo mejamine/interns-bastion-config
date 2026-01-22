@@ -3,8 +3,7 @@ bootstrap_ip: 192.168.140.19
 master01_ip: 192.168.140.20
 master02_ip: 192.168.140.21
 master03_ip: 192.168.140.22
-worker01_ip: 192.168.140.23
-worker02_ip: 192.168.140.24
+
 dns_hostname: dns.ocp4
 admin_hostname: root
 api_hostname: api.ocp4
@@ -14,15 +13,13 @@ bootstrap_hostname: bootstrap.ocp4
 master01_hostname: master01.ocp4
 master02_hostname: master02.ocp4
 master03_hostname: master03.ocp4
-worker01_hostname: worker01.ocp4
-worker02_hostname: worker02.ocp4
+
 server_dig: 10
 bootstrap_dig: 19
 master01_dig: 20
 master02_dig: 21
 master03_dig: 22
-worker01_dig: 23
-worker02_dig: 24
+
 etcd1: etcd-0.ocp4
 etcd2: etcd-1.ocp4
 etcd3: etcd-2.ocp4

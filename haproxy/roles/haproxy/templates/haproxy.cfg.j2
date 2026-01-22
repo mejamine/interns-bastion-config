@@ -57,8 +57,10 @@ frontend ingress_insecure
 backend ingress_insecure_backend
     balance     {{balance}}
     mode {{mode}}
-    server  {{worker01_hostname}} {{worker01_ip}}:{{ingress_insecure_port}} check
-    server  {{worker02_hostname}} {{worker02_ip}}:{{ingress_insecure_port}} check
+    server  {{master01_hostname}} {{master01_ip}}:{{ingress_insecure_port}} check
+    server  {{master02_hostname}} {{master02_ip}}:{{ingress_insecure_port}} check
+    server  {{master03_hostname}} {{master03_ip}}:{{ingress_insecure_port}} check
+
 
 #################################################
 # round robin balancing for RHCOS Ingress Secure Port
@@ -71,8 +73,9 @@ frontend ingress_secure
 backend ingress_secure_backend
     balance     {{balance}}
     mode {{mode}}
-    server  {{worker01_hostname}} {{worker01_ip}}:{{ingress_secure_port}} check
-    server  {{worker02_hostname}} {{worker02_ip}}:{{ingress_secure_port}} check
+    server  {{master01_hostname}} {{master01_ip}}:{{ingress_secure_port}} check
+    server  {{master02_hostname}} {{master02_ip}}:{{ingress_secure_port}} check
+    server  {{master03_hostname}} {{master03_ip}}:{{ingress_secure_port}} check
 
 #####################################################
 # Exposing HAProxy Statistic Page

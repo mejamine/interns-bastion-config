@@ -12,17 +12,13 @@ bootstrap_hostname: bootstrap
 master01_hostname: master01
 master02_hostname: master02
 master03_hostname: master03
-worker01_hostname: worker01
-worker02_hostname: worker02
+
 bootstrap_ip: 192.168.140.19
 master01_ip: 192.168.140.20
 master02_ip: 192.168.140.21
 master03_ip: 192.168.140.22
-worker01_ip: 192.168.140.23
-worker02_ip: 192.168.140.24
+
 bootstrap_mac: "52:54:00:00:32:09"
 master01_mac: "52:54:00:00:32:0A"
 master02_mac: "52:54:00:00:32:0B"
 master03_mac: "52:54:00:00:32:0C"
-worker01_mac: "52:54:00:00:32:0D"
-worker02_mac: "52:54:00:00:32:0E"

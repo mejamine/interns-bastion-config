@@ -15,6 +15,5 @@ subnet {{subnet}} netmask {{netmask}} {
     host {{master01_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master01_mac}}; fixed-address {{master01_ip}}; option host-name "{{master01_hostname}}"; }
     host {{master02_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master02_mac}}; fixed-address {{master02_ip}}; option host-name "{{master02_hostname}}"; }
     host {{master03_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master03_mac}}; fixed-address {{master03_ip}}; option host-name "{{master03_hostname}}"; }
-    host {{worker01_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{worker01_mac}}; fixed-address {{worker01_ip}}; option host-name "{{worker01_hostname}}"; }
-    host {{worker02_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{worker02_mac}}; fixed-address {{worker02_ip}}; option host-name "{{worker02_hostname}}"; }
+
 }

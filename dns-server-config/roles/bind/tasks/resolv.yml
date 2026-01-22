@@ -1,15 +1,29 @@
-- name: set resolv.conf changeable
-  ansible.builtin.command: chattr -i /etc/resolv.conf
+- name: Ensure NetworkManager does not manage resolv.conf
+  copy:
+    dest: /etc/NetworkManager/conf.d/dns-none.conf
+    content: |
+      [main]
+      dns=none
+  become: true
+  notify: restart networkmanager
+
+- name: Remove existing resolv.conf if symlink
+  file:
+    path: /etc/resolv.conf
+    state: absent
   become: true
 
-- name: modify resolv.conf
+- name: Deploy resolv.conf
   template:
     src: resolv.conf.j2
     dest: /etc/resolv.conf
     owner: root
-    group: named
+    group: root
     mode: '0644'
-
-- name: set resolv.conf not changeable
-  ansible.builtin.command: chattr +i /etc/resolv.conf
   become: true
+
+handlers:
+  - name: restart networkmanager
+    service:
+      name: NetworkManager
+      state: restarted

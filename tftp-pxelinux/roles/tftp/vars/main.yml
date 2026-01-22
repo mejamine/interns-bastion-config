@@ -1,0 +1,7 @@
+dns_server_ip: 192.168.140.10
+kernel: rhcos-4.20.0-x86_64-live-kernel.x86_64
+rootfs: rhcos-4.20.0-x86_64-live-rootfs.x86_64.img
+initramfs: rhcos-4.20.0-x86_64-live-initramfs.x86_64.img
+master: master.ign
+worker: worker.ign
+bootstrap: bootstrap.ign

@@ -1,0 +1,9 @@
+- name: Install Bind
+  dnf:
+    name: bind
+    state: present
+- name: install Bind Utils
+  dnf:
+    name: bind-utils
+    state: present
+    

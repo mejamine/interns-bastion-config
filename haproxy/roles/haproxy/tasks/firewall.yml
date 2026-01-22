@@ -1,0 +1,6 @@
+- name: firewall - ports
+  ansible.builtin.command: firewall-cmd --add-port="{{ item }}"/tcp --permanent
+  loop: "{{ ports }}"
+
+- name: Reload firewalld
+  ansible.builtin.command: firewall-cmd --reload

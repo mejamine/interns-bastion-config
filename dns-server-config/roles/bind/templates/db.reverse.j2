@@ -1,0 +1,19 @@
+$TTL 86400
+@ IN SOA {{dns_hostname}}.{{domain}}. {{admin_hostname}}.{{domain}}. (
+  2011071001 ; Serial
+  3600       ; Refresh
+  1800       ; Retry
+  604800     ; Expire
+  86400      ; Minimum
+)
+@	IN NS {{dns_hostname}}.{{domain}}.
+@	IN PTR {{domain}}
+
+{{server_dig}}      IN PTR  {{api_hostname}}.{{domain}}.
+{{server_dig}}      IN PTR  {{api_int_hostname}}.{{domain}}.
+{{bootstrap_dig}}	IN PTR  {{bootstrap_hostname}}.{{domain}}.
+{{master01_dig}}	IN PTR  {{master01_hostname}}.{{domain}}.
+{{master02_dig}}	IN PTR  {{master02_hostname}}.{{domain}}.
+{{master03_dig}}	IN PTR  {{master03_hostname}}.{{domain}}.
+{{worker01_dig}}	IN PTR 	{{worker01_hostname}}.{{domain}}.
+{{worker02_dig}}	IN PTR 	{{worker02_hostname}}.{{domain}}.

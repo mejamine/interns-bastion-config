@@ -1,0 +1,20 @@
+option domain-name     "{{domain}}";
+option domain-name-servers     {{dns_server_ip}};
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+subnet {{subnet}} netmask {{netmask}} {
+    range dynamic-bootp {{min_address}} {{max_address}};
+    option broadcast-address {{brodcast}};
+    option routers {{gateway}};
+    option domain-name-servers {{dns_server_ip}};
+    option domain-search "{{domain}}";
+    filename "{{filename}}";
+    next-server {{dns_server_ip}};
+    host {{bootstrap_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{bootstrap_mac}}; fixed-address {{bootstrap_ip}}; option host-name "{{bootstrap_hostname}}"; }
+    host {{master01_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master01_mac}}; fixed-address {{master01_ip}}; option host-name "{{master01_hostname}}"; }
+    host {{master02_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master02_mac}}; fixed-address {{master02_ip}}; option host-name "{{master02_hostname}}"; }
+    host {{master03_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{master03_mac}}; fixed-address {{master03_ip}}; option host-name "{{master03_hostname}}"; }
+    host {{worker01_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{worker01_mac}}; fixed-address {{worker01_ip}}; option host-name "{{worker01_hostname}}"; }
+    host {{worker02_hostname}}.{{cluster}}.{{domain}} { hardware ethernet {{worker02_mac}}; fixed-address {{worker02_ip}}; option host-name "{{worker02_hostname}}"; }
+}

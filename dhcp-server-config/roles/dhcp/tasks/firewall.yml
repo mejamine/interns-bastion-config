@@ -1,0 +1,8 @@
+- name: Allow DHCP service through the firewall
+  ansible.posix.firewalld:
+    service: dhcp
+    state: enabled
+
+- name: runtime
+  ansible.builtin.command: firewall-cmd --runtime-to-permanent
+

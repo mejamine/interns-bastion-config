@@ -1,0 +1,6 @@
+- name: Install haproxy
+  dnf:
+    name: haproxy
+    state: present
+
+    

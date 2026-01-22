@@ -1,0 +1,17 @@
+options {
+  directory "/var/named";
+  listen-on port 53 { {{dns_server_ip}}; };
+  allow-query { any; };
+};
+
+zone "{{domain}}" IN {
+  type master;
+  file "{{forward}}";
+  allow-update { none; };
+};
+
+zone "{{reverse_zone}}" IN {
+  type master;
+  file "{{reverse}}";
+  allow-update { none; };
+};

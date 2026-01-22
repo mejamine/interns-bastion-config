@@ -1,0 +1,5 @@
+- name: setup LoadBalancer
+  hosts: local
+  become: true
+  roles:
+   - haproxy

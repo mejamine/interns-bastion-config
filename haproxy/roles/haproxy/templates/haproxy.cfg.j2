@@ -1,0 +1,88 @@
+global
+    log         /dev/log        local0
+    chroot      /var/lib/haproxy
+    user        haproxy
+    group       haproxy
+    daemon
+
+defaults
+    log                     global
+    mode		    http
+    option 		    httplog
+    option 		    dontlognull
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+
+#############################################
+#round robin balancing for OCP kuberntes API server
+#############################################
+
+frontend k8s_api
+    bind *:{{k8s_api_port}}
+    mode {{mode}}
+    default_backend k8s_api_backend
+backend k8s_api_backend
+    balance     {{balance}}
+    mode {{mode}}
+    server  {{bootstrap_hostname}} {{bootstrap_ip}}:{{k8s_api_port}} check     # only in the installation (wait-for bootstrap-complete)
+    server  {{master01_hostname}} {{master01_ip}}:{{k8s_api_port}} check
+    server  {{master02_hostname}} {{master02_ip}}:{{k8s_api_port}} check
+    server  {{master03_hostname}} {{master03_ip}}:{{k8s_api_port}} check
+
+##############################################
+# round robin balancing for RHCOS Machine Config Server
+#############################################
+
+frontend machine_config
+    bind *:{{machine_config_port}}
+    mode {{mode}}
+    default_backend machine_config_backend
+backend machine_config_backend
+    balance     {{balance}}
+    mode {{mode}}
+    server  {{bootstrap_hostname}} {{bootstrap_ip}}:{{machine_config_port}} check    # only in the installation (wait-for bootstrap-complete)
+    server  {{master01_hostname}} {{master01_ip}}:{{machine_config_port}} check
+    server  {{master02_hostname}} {{master02_ip}}:{{machine_config_port}} check
+    server  {{master03_hostname}} {{master03_ip}}:{{machine_config_port}} check
+
+##############################################
+# round robin balancing for RHCOS Ingress Secure Port
+##############################################
+
+frontend ingress_insecure
+    bind *:{{ingress_insecure_port}}
+    mode {{mode}}
+    default_backend ingress_insecure_backend
+backend ingress_insecure_backend
+    balance     {{balance}}
+    mode {{mode}}
+    server  {{worker01_hostname}} {{worker01_ip}}:{{ingress_insecure_port}} check
+    server  {{worker02_hostname}} {{worker02_ip}}:{{ingress_insecure_port}} check
+
+#################################################
+# round robin balancing for RHCOS Ingress Secure Port
+###############################################
+
+frontend ingress_secure
+    bind *:{{ingress_secure_port}}
+    mode {{mode}}
+    default_backend ingress_secure_backend
+backend ingress_secure_backend
+    balance     {{balance}}
+    mode {{mode}}
+    server  {{worker01_hostname}} {{worker01_ip}}:{{ingress_secure_port}} check
+    server  {{worker02_hostname}} {{worker02_ip}}:{{ingress_secure_port}} check
+
+#####################################################
+# Exposing HAProxy Statistic Page
+###################################################
+
+listen stats
+    bind :{{stats_port}}
+    stats enable
+    stats uri /
+    stats hide-version
+    stats auth {{auth}}
+
+

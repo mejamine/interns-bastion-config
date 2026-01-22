@@ -1,0 +1,30 @@
+- name: Ensure TFTP directories exist
+  file:
+    path: /var/lib/tftpboot/pxelinux.cfg
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy pxelinux.0 bootloader
+  copy:
+    src: /usr/share/syslinux/pxelinux.0
+    dest: /var/lib/tftpboot/pxelinux.0
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Copy PXELinux modules (.c32)
+  copy:
+    src: "{{ item }}"
+    dest: /var/lib/tftpboot/
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+        - /usr/share/syslinux/menu.c32
+        - /usr/share/syslinux/memdisk
+        - /usr/share/syslinux/chain.c32
+        - /usr/share/syslinux/mboot.c32
+        - /usr/share/syslinux/ldlinux.c32
+        - /usr/share/syslinux/libutil.c32

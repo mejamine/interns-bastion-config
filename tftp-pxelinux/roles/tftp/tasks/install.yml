@@ -1,0 +1,15 @@
+- name: Install tftp server
+  dnf:
+    name: 
+      - tftp-server
+      - syslinux
+      - httpd
+    state: present
+
+- name: Enable and start httpd
+  systemd:
+    name: httpd
+    state: started
+    enabled: yes
+
+    

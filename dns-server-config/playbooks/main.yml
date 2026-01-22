@@ -1,0 +1,5 @@
+- name: setup BIND DNS server
+  hosts: local
+  become: true
+  roles:
+   - bind

@@ -1,0 +1,5 @@
+- name: setup DHCP server
+  hosts: local
+  become: true
+  roles:
+   - dhcp

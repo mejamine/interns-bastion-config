@@ -1,0 +1,7 @@
+- name: Allow HAProxy ports in SELinux
+  community.general.seport:
+    ports: "{{ item }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  loop: "{{ ports }}"

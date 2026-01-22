@@ -1,0 +1,15 @@
+- name: set resolv.conf changeable
+  ansible.builtin.command: chattr -i /etc/resolv.conf
+  become: true
+
+- name: modify resolv.conf
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+    owner: root
+    group: named
+    mode: '0644'
+
+- name: set resolv.conf not changeable
+  ansible.builtin.command: chattr +i /etc/resolv.conf
+  become: true

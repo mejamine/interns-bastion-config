@@ -1,0 +1,4 @@
+- name: reload named
+  systemd:
+    name: named
+    state: restarted

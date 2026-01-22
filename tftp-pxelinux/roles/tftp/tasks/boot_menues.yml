@@ -1,0 +1,31 @@
+- name: create boot menue for bootstrap
+  template:
+    src: bootstrap_menue.j2
+    dest: /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-09
+    owner: root
+    group: root
+    mode: '0644'
+
+
+- name: create boot menus for masters
+  template:
+    src: master_menue.j2
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-0a
+    - /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-0b
+    - /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-0c
+
+- name: create boot menues for workers
+  template:
+    src: worker_menue.j2
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-0d
+    - /var/lib/tftpboot/pxelinux.cfg/01-52-54-00-00-32-0e
